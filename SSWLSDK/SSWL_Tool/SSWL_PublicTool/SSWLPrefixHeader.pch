@@ -1,0 +1,259 @@
+//
+//  SSWLPrefixHeader.pch
+//  SSWLSDK
+//
+//  Created by SDK on 2018/3/19.
+//  Copyright © 2018年 SDK. All rights reserved.
+//
+
+#ifndef SSWLPrefixHeader_pch
+#define SSWLPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import"codeObfuscation.h"
+
+
+#endif /* SSWLPrefixHeader_pch */
+
+
+
+
+
+
+/* 需要用到的宏定义 */
+/***************************************************************/
+
+/* *屏幕_宽 */
+#define Screen_Width [[UIScreen mainScreen] bounds].size.width
+
+/* *屏幕_高 */
+#define Screen_Height [[UIScreen mainScreen] bounds].size.height
+
+/* *self_弱引用 */
+#define Weak_Self __weak typeof(self) weakSelf = self
+
+/* *颜色宏_RBGA */
+#define SYColor_Alpha(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+/* *颜色宏_RGB */
+#define SYColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+
+/* *cell底部_线颜色 */
+#define SYLineColor [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1.00]
+
+/* *clearColor */
+#define SYNOColor [UIColor clearColor]
+
+/* *whiteColor */
+#define SYWhiteColor [UIColor whiteColor]
+
+/* *blackColor */
+#define SYBlackColor [UIColor blackColor]
+
+/* *读取图片 */
+#define SYImage(image) [UIImage imageNamed:image]
+
+/* *获取验证码_btn_颜色 */
+#define code_Color [UIColor colorWithRed:0.98 green:0.56 blue:0.16 alpha:1.00]
+
+/* *SDK_btn_颜色 */
+#define button_Color [UIColor colorWithRed:0.94 green:0.32 blue:0.15 alpha:1.00]
+
+/* *读取Bundle_resource_logo */
+#define get_SSWL_Logo [SSWL_PublicTool getImageFromBundle:[SSWL_PublicTool getResourceBundle] withName:logo_image withType:Image_Type]
+
+/* *获取_Bundle_resource_Image */
+#define get_BundleImage(imageName) [SSWL_PublicTool getImageFromBundle:[SSWL_PublicTool getResourceBundle] withName:imageName withType:Image_Type]
+
+/* *文件名(logo_固定名字) */
+#define logo_image @"sswlLogo"
+
+/* *格式名_图片固定格式 */
+#define Image_Type @"png"
+
+/* *安全区域高度 */
+#define SafeAreaBottomHeight (Screen_Height == 812.0 ? 34 : 0)
+
+/* *是否是iPhone X */
+#define is_Iphone_X [SSWL_PublicTool isIphone_X]
+
+/* *状态栏和导航栏高度 */
+#define  SS_StatusBarAndNavigationBarHeight  (is_Iphone_X ? 88.f : 64.f)
+
+/* *状态栏高度 */
+#define  SS_StatusBarHeight  (is_Iphone_X ? 44.f : 20.f)
+
+
+
+#ifdef DEBUG
+#define SYLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define SYLog(...)
+#endif
+
+
+
+/*********************************************************************/
+
+/*相关头文件*/
+
+
+/* *ststem */
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+#import <CommonCrypto/CommonDigest.h>
+#import <CoreMotion/CoreMotion.h>
+#import <UIKit/UIDevice.h>
+#import <AdSupport/ASIdentifierManager.h>
+//************** 获取手机IP用的两个头文件；导入头文件，添加方法；
+#import <arpa/inet.h>
+#import <ifaddrs.h>
+//************** 获取手机具体设备型号头文件；导入头文件，添加方法；
+#import <sys/utsname.h>
+
+//************** 获取手机当前网络状态；导入两个系统库 SystemConfiguration.framework；CoreTelephony.framework，添加方法；
+//#import "Reachability.h"
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+
+
+
+/* *third tool */
+#import "AFNetworking.h"
+#import "MBProgressHUD.h"
+#import "Masonry.h"
+#import "UIView+Extension.h"
+#import "NSString+SYAttributes.h"
+#import "KeyChainWrapper.h"
+
+
+/* *singleton */
+#import "SSWL_BasiceInfo.h"
+#import "AYSYSingleton.h"
+#import "SSWL_PushInfo.h"
+
+/* *tool */
+#import "SSWL_PublicTool.h"
+#import "UserSafetyTool.h"
+#import "SY_SSWL_NetworkTool.h"
+#import "SSWL_Constants.h"
+#import "UserSafetyTool.h"
+
+
+/* *model */
+#import "SSWL_BindIdentituInfoModel.h"
+#import "SSWL_RegexModel.h"
+#import "SSWL_HtmlInfoToUserModel.h"
+#import "SSWL_UserModel.h"
+#import "SY_SSWL_FloatWindowTool.h"
+
+
+/* *view */
+#import "SSWL_ErrorView.h"
+#import "SSWL_AddIdentityInfo.h"
+#import "SYHTMLViewController.h"
+#import "SSWL_BGView.h"
+#import "SSWL_VerifyDynamicView.h"
+#import "SSWL_ServiceAgreementView.h"
+#import "SYSaveTouristInfo.h"
+
+/* *controller */
+#import "SSWL_GameToHtmlViewController.h"
+
+
+/* *SY */
+#import "HX_SSWL_ZFForHtml.h"
+#import "SongyorkInfo.h"
+#import "SongyorkBase.h"
+
+
+
+/*******************************************************/
+/*相关参数*/
+//#define SSWL_SDK_Version @"v0.0.1"         //测试使用SDK版本号
+
+#define SSWL_SDK_Version @"v1.6.0"         //SDK版本号
+
+
+//#define VMP_SIGN_WITH_GENERAL_WUA2 (3) //阿里请求保护的key
+#define SSWL_API_KEY @"sd8*W23n&^G12r"//签名
+
+#define SSWL_KEY @"GYBH17Y4NC8PA8PZ"
+
+#define SSWL_BBS_KEY @"FSa#GFfds&*DFS"// 论坛签名
+
+#define SYMobilUserKey @"SYMobilUserKey" //保存移动手机用户账号
+#define SYMobilPasswordKey @"SYMobilPasswordKey" //保存移动手机用户密码
+#define SYMobilTokenKey @"SYMobilTokenKey" //保存移动手机用户token
+
+#define SSWLUsernameKey @"SSWLUsernameKey" //存的数组，保存账号；
+#define SSWLPasswordKey @"SSWLPasswordKey" //存的字典，保存所有的账号、密码
+#define SSWL_fastLogin @"SSWL_fastLogin" //保存快速登录的账号、密码
+#define SSWL_UserName_Fast @"SSWL_UserName_Fast" // 一键登录用户名
+#define SSWL_Password_Fast @"SSWL_Password_Fast" // 一键登录密码
+#define SSWL_UserLogin_Auto @"SSWL_UserName_Auto" // 自动登录
+
+#define SSWL_apple_dict_key @"SSWL_apple_dict_key" //保存所有苹果支付成功的信息
+
+
+/*******************************************************/
+/*相关接口*/
+
+#define SSWL_Com_Html @"https://www.shangshiwl.com/wap/user/index"  //论坛
+
+
+// 正式
+#define SSWL_URL_Tips @"https://systatic.shangshiwl.com/sdkh5/page/login_notice/login_notice.html"//登录公告
+
+#define SSWL_URL_BeforTips @"https://systatic.shangshiwl.com/sdkh5/page/login_notice/login_after.html"//登录后公告
+
+#define SSWL_URL_GameTips @"https://systatic.shangshiwl.com/sdkh5/page/game_notice/game_notice.html"//游戏公告
+
+#define SSWL_URL_Head @"https://syuser.shangshiwl.com/?"//请求头部
+
+#define SSWL_SYUrl_CheckWeb @"https://chongzhi.shangshiwl.com/?ct=index&ac=cwps" //h5zf
+
+#define SSWL_SYUrl_Head @"https://chongzhi.shangshiwl.com/odr" //下单请求
+
+#define SSWL_SYUrl_CallBack @"https://chongzhi.shangshiwl.com/cab/apple" //zhifu回调接口
+
+#define SSWL_SYUrl_Songyork @" https://chongzhi.shangshiwl.com/?ac=chongzhi"//支付请求
+
+#define SSWL_SYUrl_Check @"https://chongzhi.shangshiwl.com/?ct=index&ac=chk" //check
+
+#define SSWL_USERTERMS_URL @"http://www.shangshiwl.com/newsx/2594.html" //用户注册协议
+
+#define SSWL_Account_Html @"https://systatic.shangshiwl.com/sdkh5/page/acount/acount.html"//账号h5页面
+
+#define SSWL_Gift_Html @"https://systatic.shangshiwl.com/sdkh5/page/gift/gift.html"//礼包H5页面
+
+#define SSWL_CustomServer_Html @"https://systatic.shangshiwl.com/sdkh5/page/custom_server/custom_server.html"//客服H5页面
+
+
+// 内网
+//#define SSWL_URL_Head @"http://192.168.100.100:90?"        //请求头部
+
+//#define SSWL_Com_Html @"http://192.168.100.100:85"          //论坛
+
+//#define SSWL_CustomServer_Html @"http://192.168.100.100:86/page/custom_server/custom_server.html"   //客服
+
+//#define SSWL_Account_Html @"http://192.168.100.100:86/page/acount/acount.html"//账号h5页面
+
+
+//#define SSWL_Gift_Html @"http://192.168.100.100:86/page/gift/gift.html"//礼包H5页面
+
+//#define SSWL_URL_Tips @"http://192.168.100.100:86/page/login_notice/login_notice.html"         登录公告
+
+#define SSWL_COM_Test @"http://192.168.100.100/Core/UserApi/sdk_login"//测试接口
+
+//#define SSWL_Gift_Html @"http://192.168.100.198:8040/comm/SDK%20H/trunk/page/gift/gift.html"//礼包H5页面
+
+//#define SSWL_CustomServer_Html @"http://192.168.100.100:86/page/custom_servertest/custom_server.html"//客服H5页面测试
+
+//#define SSWL_GiftTest_Html @"https://systatic.shangshiwl.com/sdkh5/page/gift/gifttest.html"//礼包H5页面测试
+
+
+/*登录公告*/
+//#define SSWL_LoginTips_url @"https://systatic.shangshiwl.com/sdkh5/page/custom_server/custom_server.html"
+
